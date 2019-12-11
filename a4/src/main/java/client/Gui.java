@@ -1,13 +1,7 @@
 package client;
 
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
+
 import javafx.stage.Stage;
-import org.jfree.data.general.DefaultPieDataset;
 import server.ServerIF;
 
 import javax.swing.*;
@@ -36,6 +30,8 @@ public class Gui  implements ActionListener  {
     JTextField textfield1 ,textfield;
 
     URL url;
+    Double avg;
+    String activity;
 
     {
         try {
@@ -53,9 +49,10 @@ public class Gui  implements ActionListener  {
 
 
 
-    public Gui( String[] columnNames) {
+    public Gui( String[] columnNames,Double avg) {
 
         this.columnNames = columnNames;
+        this.avg=avg;
         //this.array = array;
     }
 
@@ -125,7 +122,7 @@ public class Gui  implements ActionListener  {
 
     }
         else if (ae.getSource() == button1){
-           PieChartEx ex= new PieChartEx();
+           PieChartEx ex= new PieChartEx(activity,avg);
             ex.setVisible(true);
 
 
@@ -156,7 +153,7 @@ public class Gui  implements ActionListener  {
         for (String s: array) {
             if(s.equals("1")){
                 o[0] = "medication taken";
-            }else{
+            }else if (s.equals("0")){
                 o[0]="medication not taken";
             }
 

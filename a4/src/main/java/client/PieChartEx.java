@@ -11,8 +11,14 @@ import java.awt.*;
 
 public class PieChartEx extends JFrame {
 
-    public PieChartEx() {
+    Double avg;
+   // Double getAvg;
+    String activity;
 
+
+    public PieChartEx(String activity,Double avg) {
+        this.avg=avg;
+        this.activity=activity;
         initUI();
     }
 
@@ -36,10 +42,10 @@ public class PieChartEx extends JFrame {
 
         DefaultPieDataset dataset = new DefaultPieDataset();
 
-        dataset.setValue("Toileting", 52);
-        dataset.setValue("Showering", 31);
+        dataset.setValue(activity, avg);
+       // dataset.setValue("Showering", avg2);
         //dataset.setValue("Sleeping", 12);
-       // dataset.setValue("Breakfast", 2);
+        dataset.setValue("Breakfast", 2);
        // dataset.setValue("Lunch", 1);
         //dataset.setValue("Others", 2);
 
@@ -56,3 +62,4 @@ public class PieChartEx extends JFrame {
         return pieChart;
     }
 }
+
